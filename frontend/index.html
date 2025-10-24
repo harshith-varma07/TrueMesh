@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueMesh - Provider Intelligence Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <canvas id="networkCanvas"></canvas>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>True<span class="highlight">Mesh</span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="providers.html">Providers</a></li>
+                <li><a href="verification.html">Verification</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#" class="btn-primary">Get Started</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-up">
+                    <h1 class="glitch" data-text="Provider Intelligence">
+                        Provider Intelligence
+                    </h1>
+                    <h2>Revolutionizing Healthcare Provider Verification in India</h2>
+                    <p class="lead">
+                        Automated, AI-powered platform for real-time provider data validation, 
+                        fraud detection, and immutable provenance tracking using blockchain technology.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="dashboard.html" class="btn-primary btn-large">
+                            <span>Launch Platform</span>
+                            <i class="fas fa-rocket"></i>
+                        </a>
+                        <a href="about.html" class="btn-secondary btn-large">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="stats-bar">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="10000">0</div>
+                            <div class="stat-label">Providers Verified</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="99.8">0</div>
+                            <div class="stat-label">Accuracy Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="500">0</div>
+                            <div class="stat-label">Fraud Cases Detected</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual" data-aos="fade-left">
+                    <div class="hologram-container">
+                        <div class="hologram-circle circle-1"></div>
+                        <div class="hologram-circle circle-2"></div>
+                        <div class="hologram-circle circle-3"></div>
+                        <div class="hologram-center">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Intelligent Features</h2>
+                <p class="section-subtitle">Powered by Multi-Agent AI Architecture</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Multi-Agent System</h3>
+                    <p>8 specialized AI agents working in harmony for comprehensive provider intelligence</p>
+                    <div class="feature-stats">
+                        <span class="stat-badge">Orchestrator</span>
+                        <span class="stat-badge">Verification</span>
+                        <span class="stat-badge">Fraud Detection</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Blockchain Provenance</h3>
+                    <p>Immutable record tracking with SHA-256 hash chains and Merkle trees</p>
+                    <div class="feature-stats">
+                        <span class="stat-badge">Immutable</span>
+                        <span class="stat-badge">Traceable</span>
+                        <span class="stat-badge">Secure</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>ML Fraud Detection</h3>
+                    <p>Advanced machine learning models for anomaly detection and fraud prevention</p>
+                    <div class="feature-stats">
+                        <span class="stat-badge">Random Forest</span>
+                        <span class="stat-badge">Isolation Forest</span>
+                        <span class="stat-badge">Real-time</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Confidence Scoring</h3>
+                    <p>Dynamic trust assessment based on verification history and data consistency</p>
+                    <div class="feature-stats">
+                        <span class="stat-badge">Trust Score</span>
+                        <span class="stat-badge">Risk Level</span>
+                        <span class="stat-badge">Quality Index</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Federation Network</h3>
+                    <p>Decentralized data sharing across TPAs and insurance networks</p>
+                    <div class="feature-stats">
+                        <span class="stat-badge">Distributed</span>
+                        <span class="stat-badge">Collaborative</span>
+                        <span class="stat-badge">Secure</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>PITL Protocol</h3>
+                    <p>Provider-Initiated Trust Loop for secure self-service updates</p>
+                    <div class="feature-stats">
+                        <span class="stat-badge">Self-Service</span>
+                        <span class="stat-badge">Verified</span>
+                        <span class="stat-badge">Auditable</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="tech-stack">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Technology Stack</h2>
+                <p class="section-subtitle">Built with Modern, Production-Ready Technologies</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fab fa-python"></i>
+                    <span>Python 3.12+</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="150">
+                    <i class="fas fa-bolt"></i>
+                    <span>FastAPI</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-database"></i>
+                    <span>PostgreSQL</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="250">
+                    <i class="fas fa-memory"></i>
+                    <span>Redis</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>SQLAlchemy</span>
+                </div>
+                <div class="tech-item" data-aos="zoom-in" data-aos-delay="350">
+                    <i class="fas fa-lock"></i>
+                    <span>JWT Auth</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Transform Provider Verification?</h2>
+                <p>Join the future of healthcare provider intelligence in India</p>
+                <a href="dashboard.html" class="btn-primary btn-large">
+                    <span>Get Started Now</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-network-wired"></i> TrueMesh</h3>
+                    <p>Provider Intelligence Platform for Indian Healthcare</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="providers.html">Providers</a></li>
+                        <li><a href="verification.html">Verification</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@truemesh.io</li>
+                        <li><i class="fas fa-phone"></i> +91 123 456 7890</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TrueMesh. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/network-animation.js"></script>
+</body>
+</html>

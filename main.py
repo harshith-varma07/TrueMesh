@@ -2,9 +2,6 @@ import os
 import sys
 from pathlib import Path
 
-# Add the app directory to the Python path
-sys.path.insert(0, str(Path(__file__).parent / "app"))
-
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager

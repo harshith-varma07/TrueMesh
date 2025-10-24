@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About TrueMesh - Provider Intelligence Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <canvas id="networkCanvas"></canvas>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-network-wired"></i>
+                <span>True<span class="highlight">Mesh</span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="providers.html">Providers</a></li>
+                <li><a href="verification.html">Verification</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="#" class="btn-primary">Get Started</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-hero-content" data-aos="fade-up">
+                <h1 class="glitch" data-text="About TrueMesh">About TrueMesh</h1>
+                <p class="lead">Revolutionizing Healthcare Provider Verification in India</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-content" data-aos="fade-right">
+                    <h2 class="section-title">Our Mission</h2>
+                    <p>
+                        TrueMesh is dedicated to transforming healthcare provider data validation 
+                        in India by creating a fully automated, AI-powered platform that ensures 
+                        data integrity, fraud prevention, and seamless collaboration across the 
+                        healthcare ecosystem.
+                    </p>
+                    <p>
+                        We believe that accurate, verified provider information is fundamental to 
+                        delivering quality healthcare services and preventing fraud that costs the 
+                        industry billions annually.
+                    </p>
+                    <div class="mission-values">
+                        <div class="value-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Accuracy & Trust</span>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Automation & Efficiency</span>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Security & Privacy</span>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Innovation & Excellence</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mission-visual" data-aos="fade-left">
+                    <div class="pulse-container">
+                        <div class="pulse-circle pulse-1"></div>
+                        <div class="pulse-circle pulse-2"></div>
+                        <div class="pulse-circle pulse-3"></div>
+                        <div class="pulse-center">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">The Challenge We're Solving</h2>
+                <p class="section-subtitle">Healthcare Provider Verification in India</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="problem-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Fragmented Data Sources</h3>
+                    <p>
+                        Provider information is scattered across multiple registries, databases, 
+                        and systems with no unified source of truth, leading to inconsistencies 
+                        and outdated information.
+                    </p>
+                </div>
+
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="problem-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3>Fraud & Fake Providers</h3>
+                    <p>
+                        Healthcare fraud costs billions annually, with fake providers, duplicate 
+                        registrations, and identity theft being major concerns for payers and TPAs.
+                    </p>
+                </div>
+
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="problem-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Manual Verification</h3>
+                    <p>
+                        Traditional verification processes are time-consuming, expensive, and 
+                        error-prone, requiring significant human resources and taking days or weeks.
+                    </p>
+                </div>
+
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="problem-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>Lack of Transparency</h3>
+                    <p>
+                        No audit trail or provenance tracking for provider data changes makes it 
+                        difficult to track modifications, identify sources, or ensure accountability.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Architecture -->
+    <section class="solution-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Our Solution Architecture</h2>
+                <p class="section-subtitle">Multi-Agent AI System with Blockchain Provenance</p>
+            </div>
+            
+            <div class="architecture-container" data-aos="fade-up">
+                <div class="agent-grid">
+                    <div class="agent-card">
+                        <div class="agent-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h4>Orchestrator Agent</h4>
+                        <p>Central coordinator managing all workflows and task distribution</p>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h4>Data Verification Agent</h4>
+                        <p>Multi-source validation against MCI, insurance registries, and databases</p>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4>Confidence Scoring Agent</h4>
+                        <p>ML-powered trust assessment using Random Forest classification</p>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>Fraud Detection Agent</h4>
+                        <p>Anomaly detection with Isolation Forest for fraud prevention</p>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h4>Provenance Ledger Agent</h4>
+                        <p>Blockchain-style immutable record tracking with hash chains</p>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h4>Federated Publisher Agent</h4>
+                        <p>Secure data sharing across TPA and insurance networks</p>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>PITL Agent</h4>
+                        <p>Provider-Initiated Trust Loop for secure self-service updates</p>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h4>Compliance Manager Agent</h4>
+                        <p>Regulatory compliance monitoring and policy enforcement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Deep Dive -->
+    <section class="features-deep">
+        <div class="container">
+            <div class="feature-detail" data-aos="fade-up">
+                <div class="feature-detail-content">
+                    <div class="feature-badge">Blockchain Technology</div>
+                    <h3>Immutable Provenance Tracking</h3>
+                    <p>
+                        Every provider data change is recorded in a blockchain-style ledger using 
+                        SHA-256 hash chains and Merkle trees. This creates an immutable audit trail 
+                        that ensures complete transparency and accountability.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Genesis block initialization</li>
+                        <li><i class="fas fa-check"></i> Proof of work mining (difficulty 2)</li>
+                        <li><i class="fas fa-check"></i> Merkle root validation</li>
+                        <li><i class="fas fa-check"></i> Chain integrity verification</li>
+                    </ul>
+                </div>
+                <div class="feature-detail-visual">
+                    <div class="blockchain-viz">
+                        <div class="block">Block 1</div>
+                        <div class="chain-link"><i class="fas fa-link"></i></div>
+                        <div class="block">Block 2</div>
+                        <div class="chain-link"><i class="fas fa-link"></i></div>
+                        <div class="block">Block 3</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-detail reverse" data-aos="fade-up">
+                <div class="feature-detail-visual">
+                    <div class="ml-viz">
+                        <div class="ml-layer">Input Layer</div>
+                        <div class="ml-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="ml-layer">Hidden Layers</div>
+                        <div class="ml-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="ml-layer">Output Layer</div>
+                    </div>
+                </div>
+                <div class="feature-detail-content">
+                    <div class="feature-badge">Machine Learning</div>
+                    <h3>AI-Powered Intelligence</h3>
+                    <p>
+                        Our ML models analyze patterns in provider data to detect anomalies, 
+                        calculate confidence scores, and identify potential fraud with high accuracy.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Random Forest for confidence scoring</li>
+                        <li><i class="fas fa-check"></i> Isolation Forest for anomaly detection</li>
+                        <li><i class="fas fa-check"></i> Feature extraction and engineering</li>
+                        <li><i class="fas fa-check"></i> Continuous model retraining</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-detail" data-aos="fade-up">
+                <div class="feature-detail-content">
+                    <div class="feature-badge">Security</div>
+                    <h3>Enterprise-Grade Security</h3>
+                    <p>
+                        Built with security at its core, TrueMesh implements JWT authentication, 
+                        Fernet encryption, PII masking, and comprehensive audit logging.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> JWT-based authentication</li>
+                        <li><i class="fas fa-check"></i> AES-256 encryption for sensitive data</li>
+                        <li><i class="fas fa-check"></i> PII masking and sanitization</li>
+                        <li><i class="fas fa-check"></i> Role-based access control</li>
+                    </ul>
+                </div>
+                <div class="feature-detail-visual">
+                    <div class="security-viz">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Details -->
+    <section class="tech-details">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Technology Stack</h2>
+                <p class="section-subtitle">Production-Ready, Scalable Architecture</p>
+            </div>
+            <div class="tech-categories">
+                <div class="tech-category" data-aos="fade-up">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <ul>
+                        <li><strong>Python 3.12+:</strong> Core programming language</li>
+                        <li><strong>FastAPI:</strong> High-performance web framework</li>
+                        <li><strong>Uvicorn:</strong> ASGI server for production</li>
+                        <li><strong>Pydantic:</strong> Data validation and settings</li>
+                    </ul>
+                </div>
+
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="fas fa-database"></i> Data Layer</h3>
+                    <ul>
+                        <li><strong>PostgreSQL 15+:</strong> Primary database</li>
+                        <li><strong>SQLAlchemy:</strong> ORM and database toolkit</li>
+                        <li><strong>Alembic:</strong> Database migrations</li>
+                        <li><strong>Redis 7+:</strong> Caching and queuing</li>
+                    </ul>
+                </div>
+
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3><i class="fas fa-brain"></i> AI/ML</h3>
+                    <ul>
+                        <li><strong>scikit-learn:</strong> Machine learning models</li>
+                        <li><strong>NumPy/Pandas:</strong> Data processing</li>
+                        <li><strong>Joblib:</strong> Model persistence</li>
+                        <li><strong>LangChain:</strong> Agent framework</li>
+                    </ul>
+                </div>
+
+                <div class="tech-category" data-aos="fade-up" data-aos-delay="300">
+                    <h3><i class="fas fa-shield-alt"></i> Security</h3>
+                    <ul>
+                        <li><strong>python-jose:</strong> JWT authentication</li>
+                        <li><strong>Cryptography:</strong> Fernet encryption</li>
+                        <li><strong>Passlib:</strong> Password hashing</li>
+                        <li><strong>Structlog:</strong> Structured logging</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Benefits & Impact</h2>
+                <p class="section-subtitle">Transforming Healthcare Provider Verification</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card" data-aos="zoom-in">
+                    <div class="benefit-number">95%</div>
+                    <h4>Cost Reduction</h4>
+                    <p>Automated verification reduces manual processing costs by up to 95%</p>
+                </div>
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="benefit-number">99.8%</div>
+                    <h4>Accuracy Rate</h4>
+                    <p>ML-powered verification achieves 99.8% accuracy in fraud detection</p>
+                </div>
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="benefit-number">24/7</div>
+                    <h4>Real-Time Processing</h4>
+                    <p>Instant verification and continuous monitoring around the clock</p>
+                </div>
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="benefit-number">100%</div>
+                    <h4>Audit Trail</h4>
+                    <p>Complete transparency with immutable blockchain-based records</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Experience TrueMesh?</h2>
+                <p>Transform your provider verification process today</p>
+                <a href="dashboard.html" class="btn-primary btn-large">
+                    <span>Launch Platform</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-network-wired"></i> TrueMesh</h3>
+                    <p>Provider Intelligence Platform for Indian Healthcare</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="providers.html">Providers</a></li>
+                        <li><a href="verification.html">Verification</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@truemesh.io</li>
+                        <li><i class="fas fa-phone"></i> +91 123 456 7890</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TrueMesh. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/network-animation.js"></script>
+</body>
+</html>
