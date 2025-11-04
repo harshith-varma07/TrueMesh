@@ -4,6 +4,8 @@ from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
 import asyncio
 import uvicorn
@@ -77,6 +79,36 @@ def create_app() -> FastAPI:
     async def health_check():
         """Health check endpoint"""
         return {"status": "healthy", "service": "TrueMesh Provider Intelligence"}
+    
+    # Mount static files for frontend
+    frontend_path = Path(__file__).parent / "frontend"
+    if frontend_path.exists():
+        # Mount CSS, JS, and other assets at /css, /js, etc.
+        css_path = frontend_path / "css"
+        js_path = frontend_path / "js"
+        
+        if css_path.exists():
+            app.mount("/css", StaticFiles(directory=str(css_path)), name="css")
+        if js_path.exists():
+            app.mount("/js", StaticFiles(directory=str(js_path)), name="js")
+        
+        # Serve index.html at root
+        @app.get("/")
+        async def read_root():
+            """Serve the main frontend page"""
+            index_path = frontend_path / "index.html"
+            if index_path.exists():
+                return FileResponse(str(index_path))
+            return {"message": "TrueMesh Provider Intelligence API", "docs": "/docs"}
+        
+        # Serve other HTML pages
+        @app.get("/{page}.html")
+        async def read_page(page: str):
+            """Serve frontend HTML pages"""
+            page_path = frontend_path / f"{page}.html"
+            if page_path.exists():
+                return FileResponse(str(page_path))
+            return {"error": "Page not found"}
     
     return app
 

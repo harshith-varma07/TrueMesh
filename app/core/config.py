@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     secret_key: str = Field(..., alias="SECRET_KEY")
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
-    allowed_origins: List[str] = ["http://localhost:3000", "http://localhost:8080"]
+    allowed_origins: List[str] = ["http://localhost:3000", "http://localhost:8000", "http://localhost:8080", "http://127.0.0.1:8000"]
     
     # Database
     database_url: str = Field(..., alias="DATABASE_URL")
