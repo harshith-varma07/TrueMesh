@@ -2,7 +2,7 @@
 Core configuration module for TrueMesh Provider Intelligence
 """
 from typing import List, Optional
-from pydantic import Field
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -12,7 +12,8 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
-        case_sensitive=False
+        case_sensitive=False,
+        protected_namespaces=('settings_',)  # Exclude 'model_' from protected namespaces to allow fields like 'model_storage_path'
     )
     
     # Application
@@ -25,7 +26,7 @@ class Settings(BaseSettings):
     secret_key: str = Field(..., alias="SECRET_KEY")
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
-    allowed_origins: List[str] = ["http://localhost:3000", "http://localhost:8080"]
+    allowed_origins: List[str] = ["http://localhost:3000", "http://localhost:8000", "http://localhost:8080", "http://127.0.0.1:8000"]
     
     # Database
     database_url: str = Field(..., alias="DATABASE_URL")
@@ -58,6 +59,17 @@ class Settings(BaseSettings):
     # Federation
     federation_nodes: List[str] = Field(default=[], alias="FEDERATION_NODES")
     node_id: str = Field(default="node-1", alias="NODE_ID")
+    
+    @field_validator('federation_nodes', mode='before')
+    @classmethod
+    def parse_federation_nodes(cls, v):
+        """Parse federation_nodes from environment variable"""
+        if v is None or v == '':
+            return []
+        if isinstance(v, str):
+            # Split by comma and strip whitespace
+            return [node.strip() for node in v.split(',') if node.strip()]
+        return v
     
     # Encryption
     encryption_key: str = Field(..., alias="ENCRYPTION_KEY")

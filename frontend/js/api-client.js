@@ -270,7 +270,14 @@ class TrueMeshAPIClient {
 
     // Health check
     async healthCheck() {
-        return this.request('/health', { includeAuth: false });
+        // Use the public health endpoint (not through API prefix)
+        const url = this.baseURL.replace('/api/v1', '/health');
+        try {
+            const response = await fetch(url);
+            return await response.json();
+        } catch (error) {
+            throw error;
+        }
     }
 }
 

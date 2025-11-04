@@ -57,19 +57,53 @@ def create_async_database_engine():
     )
 
 
-# Create engines
-engine = create_database_engine()
-async_engine = create_async_database_engine()
+# Create engines lazily
+_engine = None
+_async_engine = None
 
-# Create session makers
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-AsyncSessionLocal = async_sessionmaker(
-    async_engine, class_=AsyncSession, expire_on_commit=False
-)
+
+def get_engine():
+    """Get or create the synchronous database engine"""
+    global _engine
+    if _engine is None:
+        _engine = create_database_engine()
+    return _engine
+
+
+def get_async_engine():
+    """Get or create the asynchronous database engine"""
+    global _async_engine
+    if _async_engine is None:
+        _async_engine = create_async_database_engine()
+    return _async_engine
+
+
+# Create session makers lazily
+_SessionLocal = None
+_AsyncSessionLocal = None
+
+
+def get_session_local():
+    """Get or create the session maker"""
+    global _SessionLocal
+    if _SessionLocal is None:
+        _SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=get_engine())
+    return _SessionLocal
+
+
+def get_async_session_local():
+    """Get or create the async session maker"""
+    global _AsyncSessionLocal
+    if _AsyncSessionLocal is None:
+        _AsyncSessionLocal = async_sessionmaker(
+            get_async_engine(), class_=AsyncSession, expire_on_commit=False
+        )
+    return _AsyncSessionLocal
 
 
 def get_db() -> Session:
     """Dependency for getting synchronous database session"""
+    SessionLocal = get_session_local()
     db = SessionLocal()
     try:
         yield db
@@ -79,5 +113,6 @@ def get_db() -> Session:
 
 async def get_async_db() -> AsyncGenerator[AsyncSession, None]:
     """Dependency for getting asynchronous database session"""
+    AsyncSessionLocal = get_async_session_local()
     async with AsyncSessionLocal() as session:
         yield session

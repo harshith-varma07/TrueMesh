@@ -1,15 +1,18 @@
 import os
 import sys
+import logging
 from pathlib import Path
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
 import asyncio
 import uvicorn
 
 from app.core.config import get_settings
-from app.core.database import create_database_engine, get_database_url
+from app.core.database import get_engine
 from app.api.main import api_router
 from app.agents.orchestrator import OrchestratorAgent
 from app.agents.registry import register_all_agents
@@ -26,8 +29,14 @@ async def lifespan(app: FastAPI):
     # Register all agent types
     register_all_agents()
     
-    # Initialize database
-    engine = create_database_engine()
+    # Initialize database only if DATABASE_URL is properly configured
+    # Database will be lazy-loaded when first accessed
+    if settings.environment == "production":
+        # In production, ensure database is available at startup
+        try:
+            _ = get_engine()
+        except Exception as e:
+            logging.warning(f"Database not available at startup: {e}")
     
     # Initialize and start orchestrator
     orchestrator = OrchestratorAgent()
@@ -77,6 +86,48 @@ def create_app() -> FastAPI:
     async def health_check():
         """Health check endpoint"""
         return {"status": "healthy", "service": "TrueMesh Provider Intelligence"}
+    
+    # Mount static files for frontend
+    frontend_path = Path(__file__).parent / "frontend"
+    if frontend_path.exists():
+        # Mount CSS, JS, and other assets at /css, /js, etc.
+        css_path = frontend_path / "css"
+        js_path = frontend_path / "js"
+        
+        if css_path.exists():
+            app.mount("/css", StaticFiles(directory=str(css_path)), name="css")
+        if js_path.exists():
+            app.mount("/js", StaticFiles(directory=str(js_path)), name="js")
+        
+        # Serve index.html at root
+        @app.get("/")
+        async def read_root():
+            """Serve the main frontend page"""
+            index_path = frontend_path / "index.html"
+            if index_path.exists():
+                return FileResponse(str(index_path))
+            return {"message": "TrueMesh Provider Intelligence API", "docs": "/docs"}
+        
+        # Serve other HTML pages
+        @app.get("/{page}.html")
+        async def read_page(page: str):
+            """Serve frontend HTML pages"""
+            # List of allowed page names
+            allowed_pages = ["dashboard", "providers", "verification", "login", "about", "profile", "register"]
+            
+            # Validate page parameter to prevent path traversal attacks
+            # Check for path traversal characters first
+            if ".." in page or "/" in page or "\\" in page:
+                raise HTTPException(status_code=404, detail="Invalid page name")
+            
+            # Ensure page is either alphanumeric or in allowed list
+            if not (page.isalnum() or page in allowed_pages):
+                raise HTTPException(status_code=404, detail="Page not found")
+            
+            page_path = frontend_path / f"{page}.html"
+            if page_path.exists() and page_path.parent == frontend_path:
+                return FileResponse(str(page_path))
+            raise HTTPException(status_code=404, detail="Page not found")
     
     return app
 

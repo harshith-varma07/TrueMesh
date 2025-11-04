@@ -10,6 +10,10 @@ from app.agents.provenance_ledger import ProvenanceLedgerAgent
 from app.agents.federated_publisher import FederatedPublisherAgent
 from app.agents.pitl import PITLAgent
 from app.agents.compliance_manager import ComplianceManagerAgent
+from app.agents.entity_resolution import EntityResolutionAgent
+from app.agents.data_ingestion import DataIngestionAgent
+from app.agents.analytics_insights import AnalyticsInsightsAgent
+from app.agents.model_lifecycle import ModelLifecycleAgent
 
 
 def register_all_agents():
@@ -22,3 +26,7 @@ def register_all_agents():
     agent_registry.register_agent_type("federated_publisher", FederatedPublisherAgent)
     agent_registry.register_agent_type("pitl", PITLAgent)
     agent_registry.register_agent_type("compliance_manager", ComplianceManagerAgent)
+    agent_registry.register_agent_type("entity_resolution", EntityResolutionAgent)
+    agent_registry.register_agent_type("data_ingestion", DataIngestionAgent)
+    agent_registry.register_agent_type("analytics_insights", AnalyticsInsightsAgent)
+    agent_registry.register_agent_type("model_lifecycle", ModelLifecycleAgent)
