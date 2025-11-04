@@ -4,17 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About TrueMesh - Provider Intelligence Platform</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/truemesh.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="background-animation">
-        <canvas id="networkCanvas"></canvas>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -28,7 +22,7 @@
                 <li><a href="providers.html">Providers</a></li>
                 <li><a href="verification.html">Verification</a></li>
                 <li><a href="about.html" class="active">About</a></li>
-                <li><a href="#" class="btn-primary">Get Started</a></li>
+                <li><a href="login.html" class="btn-primary">Login</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -42,8 +36,8 @@
     <section class="about-hero">
         <div class="container">
             <div class="about-hero-content" data-aos="fade-up">
-                <h1 class="glitch" data-text="About TrueMesh">About TrueMesh</h1>
-                <p class="lead">Revolutionizing Healthcare Provider Verification in India</p>
+                <h1>About TrueMesh</h1>
+                <p class="lead">Revolutionizing Healthcare Provider Verification with Enterprise-Grade Security and Intelligence</p>
             </div>
         </div>
     </section>
@@ -85,11 +79,11 @@
                     </div>
                 </div>
                 <div class="mission-visual" data-aos="fade-left">
-                    <div class="pulse-container">
-                        <div class="pulse-circle pulse-1"></div>
-                        <div class="pulse-circle pulse-2"></div>
-                        <div class="pulse-circle pulse-3"></div>
-                        <div class="pulse-center">
+                    <div class="visual-container">
+                        <div class="visual-circle circle-1"></div>
+                        <div class="visual-circle circle-2"></div>
+                        <div class="visual-circle circle-3"></div>
+                        <div class="visual-center">
                             <i class="fas fa-heartbeat"></i>
                         </div>
                     </div>
@@ -401,7 +395,7 @@
             <div class="cta-content" data-aos="fade-up">
                 <h2>Ready to Experience TrueMesh?</h2>
                 <p>Transform your provider verification process today</p>
-                <a href="dashboard.html" class="btn-primary btn-large">
+                <a href="login.html" class="btn-primary btn-large">
                     <span>Launch Platform</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -455,6 +449,5 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/network-animation.js"></script>
 </body>
 </html>

@@ -3,15 +3,51 @@
  * Modern interactions and animations
  */
 
-// Initialize AOS (Animate On Scroll)
-if (typeof AOS !== 'undefined') {
-    AOS.init({
-        duration: 1000,
-        easing: 'ease-out-cubic',
-        once: true,
-        offset: 100
-    });
+// Initialize AOS (Animate On Scroll) when DOM is ready
+const initAOS = () => {
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 100,
+            delay: 0,
+            anchorPlacement: 'top-bottom',
+            disable: false
+        });
+        
+        // Refresh AOS to ensure all elements are detected
+        setTimeout(() => {
+            AOS.refresh();
+        }, 100);
+    } else {
+        // Retry after a short delay if AOS is not loaded yet
+        setTimeout(initAOS, 100);
+    }
+};
+
+// Call initAOS when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAOS);
+} else {
+    initAOS();
 }
+
+// Refresh AOS on window resize and after page transitions
+window.addEventListener('resize', () => {
+    if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+    }
+});
+
+// Refresh AOS when navigating back/forward
+window.addEventListener('popstate', () => {
+    if (typeof AOS !== 'undefined') {
+        setTimeout(() => {
+            AOS.refresh();
+        }, 100);
+    }
+});
 
 // Navbar scroll effect
 window.addEventListener('scroll', () => {

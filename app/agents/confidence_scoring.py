@@ -6,9 +6,9 @@ import pickle
 from typing import Dict, Any, Optional, List
 from datetime import datetime
 import numpy as np
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.preprocessing import StandardScaler
-import joblib
+from sklearn.ensemble import RandomForestClassifier  # type: ignore
+from sklearn.preprocessing import StandardScaler # type: ignore
+import joblib #type: ignore
 
 from app.core.agent_base import BaseAgent, AgentTask, AgentResult, AgentStatus
 from app.core.logging import get_logger

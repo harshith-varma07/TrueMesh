@@ -4,16 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrueMesh - Provider Intelligence Platform</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/truemesh.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="background-animation">
-        <canvas id="networkCanvas"></canvas>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -27,7 +22,7 @@
                 <li><a href="providers.html">Providers</a></li>
                 <li><a href="verification.html">Verification</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="#" class="btn-primary">Get Started</a></li>
+                <li><a href="login.html" class="btn-primary">Login</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -42,46 +37,51 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text" data-aos="fade-up">
-                    <h1 class="glitch" data-text="Provider Intelligence">
-                        Provider Intelligence
-                    </h1>
-                    <h2>Revolutionizing Healthcare Provider Verification in India</h2>
+                    <h1>Secure Provider Intelligence for Healthcare</h1>
+                    <h2>Fraud Detection & Data Validation Platform</h2>
                     <p class="lead">
-                        Automated, AI-powered platform for real-time provider data validation, 
-                        fraud detection, and immutable provenance tracking using blockchain technology.
+                        Enterprise-grade AI-powered platform for real-time healthcare provider verification, 
+                        fraud detection, and immutable audit trails. Built for Indian TPAs and payers.
                     </p>
                     <div class="hero-buttons">
-                        <a href="dashboard.html" class="btn-primary btn-large">
-                            <span>Launch Platform</span>
-                            <i class="fas fa-rocket"></i>
+                        <a href="login.html" class="btn-primary btn-large">
+                            <span>Access Platform</span>
+                            <i class="fas fa-arrow-right"></i>
                         </a>
                         <a href="about.html" class="btn-secondary btn-large">
                             <span>Learn More</span>
-                            <i class="fas fa-arrow-right"></i>
+                            <i class="fas fa-info-circle"></i>
                         </a>
                     </div>
                     <div class="stats-bar">
                         <div class="stat-item">
-                            <div class="stat-number" data-target="10000">0</div>
+                            <div class="stat-number" data-target="10000">10,000+</div>
                             <div class="stat-label">Providers Verified</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number" data-target="99.8">0</div>
+                            <div class="stat-number" data-target="99.8">99.8%</div>
                             <div class="stat-label">Accuracy Rate</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number" data-target="500">0</div>
+                            <div class="stat-number" data-target="500">500+</div>
                             <div class="stat-label">Fraud Cases Detected</div>
                         </div>
                     </div>
                 </div>
                 <div class="hero-visual" data-aos="fade-left">
-                    <div class="hologram-container">
-                        <div class="hologram-circle circle-1"></div>
-                        <div class="hologram-circle circle-2"></div>
-                        <div class="hologram-circle circle-3"></div>
-                        <div class="hologram-center">
-                            <i class="fas fa-shield-halved"></i>
+                    <div class="hero-illustration">
+                        <div class="illustration-bg"></div>
+                        <div class="illustration-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="floating-badge badge-1">
+                            <i class="fas fa-check-circle" style="color: #10b981;"></i> Verified
+                        </div>
+                        <div class="floating-badge badge-2">
+                            <i class="fas fa-lock" style="color: #1e40af;"></i> Secure
+                        </div>
+                        <div class="floating-badge badge-3">
+                            <i class="fas fa-chart-line" style="color: #0ea5e9;"></i> 99.8% Accuracy
                         </div>
                     </div>
                 </div>
@@ -220,7 +220,7 @@
             <div class="cta-content" data-aos="fade-up">
                 <h2>Ready to Transform Provider Verification?</h2>
                 <p>Join the future of healthcare provider intelligence in India</p>
-                <a href="dashboard.html" class="btn-primary btn-large">
+                <a href="login.html" class="btn-primary btn-large">
                     <span>Get Started Now</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -274,6 +274,5 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/network-animation.js"></script>
 </body>
 </html>

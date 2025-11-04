@@ -1,22 +1,16 @@
 """
-Blockchain module initialization
+Blockchain module for TrueMesh Provider Intelligence
 
-This module will contain blockchain implementation for 
-immutable provenance record tracking.
+Complete blockchain implementation for immutable provenance tracking.
 
-Status: Placeholder - To be implemented
-
-Current implementation is embedded in:
-- app/agents/provenance_ledger.py (ProvenanceLedgerAgent)
-
-Future components:
-- core.py: Core blockchain logic (Block, Chain, Mining)
-- merkle.py: Merkle tree implementation
-- consensus.py: Consensus mechanism (PoW, PoS, etc.)
-- persistence.py: Chain storage and recovery
-- network.py: Blockchain network synchronization
+Components:
+- core.py: Complete blockchain with blocks, Merkle trees, and proof of work
+- Transaction: Transaction data structure with hash calculation
+- MerkleTree: Merkle tree implementation for transaction verification
+- Block: Block structure with mining and validation
+- Blockchain: Full blockchain with mining, validation, and chain management
 """
 
-from app.blockchain.core import Block, Blockchain
+from app.blockchain.core import Block, Blockchain, Transaction, MerkleTree
 
-__all__ = ["Block", "Blockchain"]
+__all__ = ["Block", "Blockchain", "Transaction", "MerkleTree"]
