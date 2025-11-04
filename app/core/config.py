@@ -13,7 +13,7 @@ class Settings(BaseSettings):
         env_file=".env",
         env_file_encoding="utf-8",
         case_sensitive=False,
-        protected_namespaces=('settings_',)  # Allow 'model_' prefix in field names
+        protected_namespaces=('settings_',)  # Exclude 'model_' from protected namespaces to allow fields like 'model_storage_path'
     )
     
     # Application

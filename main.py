@@ -1,5 +1,6 @@
 import os
 import sys
+import logging
 from pathlib import Path
 
 from fastapi import FastAPI, Request, HTTPException
@@ -35,7 +36,6 @@ async def lifespan(app: FastAPI):
         try:
             _ = get_engine()
         except Exception as e:
-            import logging
             logging.warning(f"Database not available at startup: {e}")
     
     # Initialize and start orchestrator
@@ -112,13 +112,17 @@ def create_app() -> FastAPI:
         @app.get("/{page}.html")
         async def read_page(page: str):
             """Serve frontend HTML pages"""
-            # Validate page parameter to prevent path traversal attacks
-            if not page.isalnum() and page not in ["dashboard", "providers", "verification", "login", "about", "profile"]:
-                raise HTTPException(status_code=404, detail="Page not found")
+            # List of allowed page names
+            allowed_pages = ["dashboard", "providers", "verification", "login", "about", "profile", "register"]
             
-            # Ensure no path traversal characters
+            # Validate page parameter to prevent path traversal attacks
+            # Check for path traversal characters first
             if ".." in page or "/" in page or "\\" in page:
                 raise HTTPException(status_code=404, detail="Invalid page name")
+            
+            # Ensure page is either alphanumeric or in allowed list
+            if not (page.isalnum() or page in allowed_pages):
+                raise HTTPException(status_code=404, detail="Page not found")
             
             page_path = frontend_path / f"{page}.html"
             if page_path.exists() and page_path.parent == frontend_path:
