@@ -11,8 +11,8 @@ This module contains fundamental components:
 from app.core.config import get_settings, Settings
 from app.core.database import (
     Base,
-    engine,
-    async_engine,
+    get_engine,
+    get_async_engine,
     get_db,
     get_async_db,
     create_database_engine,
@@ -34,8 +34,8 @@ __all__ = [
     "Settings",
     # Database
     "Base",
-    "engine",
-    "async_engine",
+    "get_engine",
+    "get_async_engine",
     "get_db",
     "get_async_db",
     "create_database_engine",

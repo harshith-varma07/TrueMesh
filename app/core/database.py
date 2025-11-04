@@ -78,10 +78,6 @@ def get_async_engine():
     return _async_engine
 
 
-# Keep backwards compatibility
-engine = None  # Will be created lazily
-async_engine = None  # Will be created lazily
-
 # Create session makers lazily
 _SessionLocal = None
 _AsyncSessionLocal = None
@@ -103,10 +99,6 @@ def get_async_session_local():
             get_async_engine(), class_=AsyncSession, expire_on_commit=False
         )
     return _AsyncSessionLocal
-
-
-SessionLocal = None  # Will be created lazily
-AsyncSessionLocal = None  # Will be created lazily
 
 
 def get_db() -> Session:

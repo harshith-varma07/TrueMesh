@@ -2,7 +2,7 @@ import os
 import sys
 from pathlib import Path
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -28,8 +28,15 @@ async def lifespan(app: FastAPI):
     # Register all agent types
     register_all_agents()
     
-    # Initialize database (lazy loaded when first used)
-    # engine = get_engine()  # Commented out to allow startup without database
+    # Initialize database only if DATABASE_URL is properly configured
+    # Database will be lazy-loaded when first accessed
+    if settings.environment == "production":
+        # In production, ensure database is available at startup
+        try:
+            _ = get_engine()
+        except Exception as e:
+            import logging
+            logging.warning(f"Database not available at startup: {e}")
     
     # Initialize and start orchestrator
     orchestrator = OrchestratorAgent()
@@ -105,10 +112,18 @@ def create_app() -> FastAPI:
         @app.get("/{page}.html")
         async def read_page(page: str):
             """Serve frontend HTML pages"""
+            # Validate page parameter to prevent path traversal attacks
+            if not page.isalnum() and page not in ["dashboard", "providers", "verification", "login", "about", "profile"]:
+                raise HTTPException(status_code=404, detail="Page not found")
+            
+            # Ensure no path traversal characters
+            if ".." in page or "/" in page or "\\" in page:
+                raise HTTPException(status_code=404, detail="Invalid page name")
+            
             page_path = frontend_path / f"{page}.html"
-            if page_path.exists():
+            if page_path.exists() and page_path.parent == frontend_path:
                 return FileResponse(str(page_path))
-            return {"error": "Page not found"}
+            raise HTTPException(status_code=404, detail="Page not found")
     
     return app
 
