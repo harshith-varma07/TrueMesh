@@ -11,7 +11,7 @@ import asyncio
 import uvicorn
 
 from app.core.config import get_settings
-from app.core.database import create_database_engine, get_database_url
+from app.core.database import get_engine
 from app.api.main import api_router
 from app.agents.orchestrator import OrchestratorAgent
 from app.agents.registry import register_all_agents
@@ -28,8 +28,8 @@ async def lifespan(app: FastAPI):
     # Register all agent types
     register_all_agents()
     
-    # Initialize database
-    engine = create_database_engine()
+    # Initialize database (lazy loaded when first used)
+    # engine = get_engine()  # Commented out to allow startup without database
     
     # Initialize and start orchestrator
     orchestrator = OrchestratorAgent()

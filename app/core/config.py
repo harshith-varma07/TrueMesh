@@ -2,7 +2,7 @@
 Core configuration module for TrueMesh Provider Intelligence
 """
 from typing import List, Optional
-from pydantic import Field
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -12,7 +12,8 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
-        case_sensitive=False
+        case_sensitive=False,
+        protected_namespaces=('settings_',)  # Allow 'model_' prefix in field names
     )
     
     # Application
@@ -58,6 +59,17 @@ class Settings(BaseSettings):
     # Federation
     federation_nodes: List[str] = Field(default=[], alias="FEDERATION_NODES")
     node_id: str = Field(default="node-1", alias="NODE_ID")
+    
+    @field_validator('federation_nodes', mode='before')
+    @classmethod
+    def parse_federation_nodes(cls, v):
+        """Parse federation_nodes from environment variable"""
+        if v is None or v == '':
+            return []
+        if isinstance(v, str):
+            # Split by comma and strip whitespace
+            return [node.strip() for node in v.split(',') if node.strip()]
+        return v
     
     # Encryption
     encryption_key: str = Field(..., alias="ENCRYPTION_KEY")
